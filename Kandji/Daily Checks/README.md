@@ -34,3 +34,5 @@ It's kinda a janky script so please use it with caution.
 2. **GitHub Actions**: These scripts can be automated using GitHub Actions. Ensure that your repository is configured with the necessary secrets for API keys and Slack webhook URLs.
 
 3. **Local Execution**: To run these scripts locally, ensure you have Python installed and the required dependencies and environment variables set.
+
+Please use caution when using any of these scripts.
