@@ -8,7 +8,7 @@ This directory contains Python scripts designed to monitor and report the status
 Identifies devices that have not checked in within the last 24 hours and sends a list to Slack.
 
 ### `errorCheck.py`
-Checks for errors in the device record and sends a summary to Slack.
+Checks all macOS devices for errors listed in its record and sends a summary to Slack.
 
 ### `hardDrive70.py`
 Monitors devices for hard drive usage over 70% and sends a list to Slack.
