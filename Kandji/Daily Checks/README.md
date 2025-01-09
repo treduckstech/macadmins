@@ -1,6 +1,6 @@
 # Kandji Daily Checks
 
-This directory contains Python scripts designed to monitor and report the status of devices managed by Kandji. These scripts can be run daily using GitHub Actions or manually on a local machine or virtual machine. The results are sent to a Slack channel for easy monitoring.
+This directory contains Python scripts designed to monitor and report the status of devices managed by Kandji. These scripts are run daily using GitHub Actions and the results are sent to a Slack channel for easy monitoring.
 
 ## Scripts Overview
 
