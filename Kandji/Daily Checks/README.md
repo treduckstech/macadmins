@@ -15,6 +15,7 @@ Monitors devices for hard drive usage over 70% and sends a list to Slack.
 
 ### `latestOScheck.py`
 Compares the OS versions of devices with the latest available versions and sends a list of devices that are not up to date to Slack. Leverages [SOFA](https://sofa.macadmins.io/) to get the latest OS versions.
+- Need to fix the zero day listing for iOS devices.
 
 ### `macosLocationByIP.py`
 Updates device notes in Kandji with location information based on the public IP. Due to using the public IP of a device to find the location, it's not very accurate. I wrote this mainly so I could see if my devices had left the country. Leverages the [ipify](https://www.ipify.org/) API.
