@@ -1,6 +1,6 @@
 # Kandji Daily Checks
 
-This directory contains Python scripts designed to monitor and report the status of devices managed by Kandji. These scripts can be run daily using GitHub Actions or manually on a local machine or virtual machine. The results are sent to a Slack channel for easy monitoring.
+This directory contains Python scripts designed to monitor and report the status of devices managed by Kandji. These scripts are run daily using GitHub Actions and the results are sent to a Slack channel for easy monitoring.
 
 ## Scripts Overview
 
@@ -15,12 +15,12 @@ Monitors devices for hard drive usage over 70% and sends a list to Slack.
 
 ### `latestOScheck.py`
 Compares the OS versions of devices with the latest available versions and sends a list of devices that are not up to date to Slack. Leverages [SOFA](https://sofa.macadmins.io/) to get the latest OS versions.
+- Need to fix the zero day listing for iOS devices.
 
 ### `macosLocationByIP.py`
 Updates device notes in Kandji with location information based on the public IP. Due to using the public IP of a device to find the location, it's not very accurate. I wrote this mainly so I could see if my devices had left the country. Leverages the [ipify](https://www.ipify.org/) API.
 
-It's kinda a janky script so please use it with caution.
-- Does not work if the user is not logged in - need to fix.
+It's kind of a janky script so please use it with caution.
 - I need to add a check to see if the device is connected to VPN.
 
 ## Setup and Configuration
