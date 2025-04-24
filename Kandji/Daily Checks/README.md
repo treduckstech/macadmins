@@ -8,7 +8,7 @@ This directory contains Python scripts designed to monitor and report the status
 Identifies devices that have not checked in within the last 24 hours and sends a list to Slack.
 
 ### `errorCheck.py`
-Checks all macOS devices for errors listed in its record and sends a summary to Slack.
+Checks for errors in the device record and sends a summary to Slack.
 
 ### `hardDrive70.py`
 Monitors devices for hard drive usage over 70% and sends a list to Slack.
@@ -34,5 +34,3 @@ It's kinda a janky script so please use it with caution.
 2. **GitHub Actions**: These scripts can be automated using GitHub Actions. Ensure that your repository is configured with the necessary secrets for API keys and Slack webhook URLs.
 
 3. **Local Execution**: To run these scripts locally, ensure you have Python installed and the required dependencies and environment variables set.
-
-Please use caution when using any of these scripts.

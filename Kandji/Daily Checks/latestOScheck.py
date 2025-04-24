@@ -3,7 +3,7 @@
 import requests
 import os
 from packaging import version
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Load environment variables (GitHub Secrets)
 api_key = os.getenv('DEVICE_CHECK_24')
@@ -24,26 +24,34 @@ def get_latest_versions_from_json(json_url):
     latest_info = data['OSVersions'][0]['Latest']
     latest_version = latest_info['ProductVersion']
     latest_build = latest_info['Build']
-    latest_release_date = datetime.fromisoformat(latest_info['ReleaseDate'].replace("Z", "+00:00")).strftime('%B %d, %Y')
+    latest_release_date = datetime.fromisoformat(latest_info['ReleaseDate'].replace("Z", "+00:00"))
+    formatted_release_date = latest_release_date.strftime('%B %d, %Y')
     zero_day_exploits = latest_info.get('ActivelyExploitedCVEs', [])
 
-    return latest_version, latest_build, latest_release_date, zero_day_exploits
+    return latest_version, latest_build, formatted_release_date, zero_day_exploits, latest_release_date
 
 # Fetch the latest iOS and macOS versions
-latest_ios_version, latest_ios_build, latest_ios_release_date, ios_zero_days = get_latest_versions_from_json(ios_json_url)
-latest_macos_version, latest_macos_build, latest_macos_release_date, macos_zero_days = get_latest_versions_from_json(macos_json_url)
+latest_ios_version, latest_ios_build, latest_ios_release_date, ios_zero_days, ios_release_datetime = get_latest_versions_from_json(ios_json_url)
+latest_macos_version, latest_macos_build, latest_macos_release_date, macos_zero_days, macos_release_datetime = get_latest_versions_from_json(macos_json_url)
+
+# Calculate days since release
+current_date = datetime.now(timezone.utc)
+ios_days_since_release = (current_date - ios_release_datetime).days
+macos_days_since_release = (current_date - macos_release_datetime).days
 
 print("Latest OS Versions:")
 print("macOS:")
 print(f"  Version: {latest_macos_version}")
 print(f"  Build: {latest_macos_build}")
 print(f"  Release Date: {latest_macos_release_date}")
+print(f"  Days Since Release: {macos_days_since_release}")
 print(f"  Zero Day Exploits: {'None' if not macos_zero_days else ', '.join(macos_zero_days)}\n")
 
 print("iOS:")
 print(f"  Version: {latest_ios_version}")
 print(f"  Build: {latest_ios_build}")
 print(f"  Release Date: {latest_ios_release_date}")
+print(f"  Days Since Release: {ios_days_since_release}")
 print(f"  Zero Day Exploits: {'None' if not ios_zero_days else ', '.join(ios_zero_days)}\n")
 
 # Complete API URL with path and query parameters
@@ -105,8 +113,10 @@ for device in devices:
 message = (
     "Latest OS Versions:\n"
     f"macOS:\n  Version: {latest_macos_version}\n  Build: {latest_macos_build}\n  Release Date: {latest_macos_release_date}\n"
+    f"  Days Since Release: {macos_days_since_release}\n"
     f"  Zero Day Exploits: {'None' if not macos_zero_days else ', '.join(macos_zero_days)}\n\n"
     f"iOS:\n  Version: {latest_ios_version}\n  Build: {latest_ios_build}\n  Release Date: {latest_ios_release_date}\n"
+    f"  Days Since Release: {ios_days_since_release}\n"
     f"  Zero Day Exploits: {'None' if not ios_zero_days else ', '.join(ios_zero_days)}\n\n"
     "Devices not running the latest OS:\n"
 )
