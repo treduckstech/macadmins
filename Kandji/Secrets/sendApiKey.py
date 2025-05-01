@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# apollo-sync
 
 import os
 import subprocess
