@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+"""
+Stores a Kandji API key in the macOS System Keychain, replacing any key older
+than 30 days.
+
+Author: Ben Rillie <ben@treducks.tech>
+WARNING: Use at your own risk.
+License: MIT
+"""
 
 import os
 import subprocess

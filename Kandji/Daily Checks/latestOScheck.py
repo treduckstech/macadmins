@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+"""
+Fetches the latest macOS and iOS versions from SOFA and reports devices that are
+behind via Slack.
+
+Author: Ben Rillie <ben@treducks.tech>
+WARNING: Use at your own risk.
+License: MIT
+"""
 
 import requests
 import os

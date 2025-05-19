@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+"""
+Collects Kandji library item errors for each device and sends a summary to Slack.
+
+Author: Ben Rillie <ben@treducks.tech>
+WARNING: Use at your own risk.
+License: MIT
+"""
 
 import requests
 import os
