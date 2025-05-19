@@ -1,12 +1,8 @@
 # Kandji Self Service
 
-Scripts that I put in Self Service for users to run as needed.
+Utilities intended for end users. These scripts can be deployed through Kandji Self Service.
 
-## Scripts Overview
+## Scripts
 
 ### `dockPicker.py`
-When run from Self Service, the script scans the /Applications folder to generate a list of non-Apple apps and presents them to the user as a selection list. The user can choose the apps they want to add to their dock by checking the corresponding boxes.
-
-There is also an option to completely clear the dock before adding any apps or to clear the dock without adding any apps.
-
-Please use caution when using any of these scripts.
+Provides a graphical interface to select installed applications and add them to the Dock. Users can optionally clear the Dock before adding items or empty the Dock entirely. Requires `dockutil` to be installed on the system.
