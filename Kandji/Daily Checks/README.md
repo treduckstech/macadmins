@@ -1,36 +1,31 @@
 # Kandji Daily Checks
 
-This directory contains Python scripts designed to monitor and report the status of devices managed by Kandji. These scripts are run daily using GitHub Actions and the results are sent to a Slack channel for easy monitoring.
+Scripts in this folder monitor device health and post results to Slack. They can be run manually or scheduled through GitHub Actions or another automation platform.
 
-## Scripts Overview
+## Scripts
 
 ### `checkin24Hours.py`
-Identifies devices that have not checked in within the last 24 hours and sends a list to Slack.
+Lists devices that have not checked in within the last day.
 
 ### `errorCheck.py`
-Checks for errors in the device record and sends a summary to Slack.
+Collects library item errors for each device.
 
 ### `hardDrive70.py`
-Monitors devices for hard drive usage over 70% and sends a list to Slack.
+Reports machines where the main volume is more than 70% full.
 
 ### `latestOScheck.py`
-Compares the OS versions of devices with the latest available versions and sends a list of devices that are not up to date to Slack. Leverages [SOFA](https://sofa.macadmins.io/) to get the latest OS versions.
-- Need to fix the zero day listing for iOS devices.
+Fetches the latest macOS and iOS versions from [SOFA](https://sofa.macadmins.io/) and lists devices that are behind.
 
 ### `macosLocationByIP.py`
-Updates device notes in Kandji with location information based on the public IP. Due to using the public IP of a device to find the location, it's not very accurate. I wrote this mainly so I could see if my devices had left the country. Leverages the [ipify](https://www.ipify.org/) API.
+Uses the device's public IP to estimate its location via the ipify and IPInfo APIs, then writes the result to the device notes.
 
-It's kind of a janky script so please use it with caution.
-- I need to add a check to see if the device is connected to VPN.
+## Setup
 
-## Setup and Configuration
+Set the following environment variables for API access and Slack notifications:
 
-1. **Environment Variables**: Ensure the following environment variables are set for API access and Slack integration:
-   - `DEVICE_CHECK_24`
-   - `KANDJI_BASE_URL`
-   - `KANDJI_NOTIFICATIONS_ID`
-   - `KANDJI_NOTIFICATIONS_WEBHOOK`
+- `DEVICE_CHECK_24`
+- `KANDJI_BASE_URL`
+- `KANDJI_NOTIFICATIONS_ID`
+- `KANDJI_NOTIFICATIONS_WEBHOOK`
 
-2. **GitHub Actions**: These scripts can be automated using GitHub Actions. Ensure that your repository is configured with the necessary secrets for API keys and Slack webhook URLs.
-
-3. **Local Execution**: To run these scripts locally, ensure you have Python installed and the required dependencies and environment variables set.
+These scripts require Python 3 and network access to Kandji and Slack.
