@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+"""
+Lists devices that have not checked in within the last day using the Kandji API
+and posts the results to Slack.
+
+Author: Ben Rillie <ben@treducks.tech>
+WARNING: Use at your own risk.
+License: MIT
+"""
 
 import requests
 from datetime import datetime, timedelta, timezone

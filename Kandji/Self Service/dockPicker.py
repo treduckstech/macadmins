@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+"""
+Provides a graphical interface to select installed applications and add them to
+the Dock using dockutil. Users can optionally clear or empty the Dock.
+
+Author: Ben Rillie <ben@treducks.tech>
+WARNING: Use at your own risk.
+License: MIT
+"""
 
 import os
 import sys

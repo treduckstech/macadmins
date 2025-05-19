@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+"""
+Estimates a Mac's location using its public IP address and updates the device
+notes via the Kandji API.
+
+Author: Ben Rillie <ben@treducks.tech>
+WARNING: Use at your own risk.
+License: MIT
+"""
 
 import subprocess
 import sys
